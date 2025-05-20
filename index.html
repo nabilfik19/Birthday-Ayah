@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulang Tahun Ayah ke-56</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #FFA500;
+        }
+
+        .photo-frame {
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
+            border: 10px solid #FFD700;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+            overflow: hidden;
+            position: relative;
+            transform: rotate(-5deg);
+            transition: transform 0.5s;
+        }
+
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .photo-frame:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-frame::before, .photo-frame::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 215, 0, 0.3);
+            z-index: 10;
+        }
+
+        .photo-frame::before {
+            top: -25px;
+            left: -25px;
+            border-radius: 50%;
+        }
+
+        .photo-frame::after {
+            bottom: -25px;
+            right: -25px;
+            border-radius: 50%;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 30px 0;
+            text-align: justify;
+        }
+
+        .age-display {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-top: 40px;
+            color: #FFA500;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
+            animation: confetti 5s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .hearts {
+            position: fixed;
+            font-size: 20px;
+            color: #ff0000;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #FFA500, #FFD700);
+            border: none;
+            color: #333;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .hidden-message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 20px;
+        }
+
+        .show {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat Ulang Tahun Ayah!</h1>
+        <h2>56 Tahun Penuh Berkat</h2>
+        
+        <div class="age-display">56</div>
+        
+        <div class="photo-frame">
+            <!-- Ganti dengan gambar ayah Anda -->
+            <img src="gambar_ayah.jpg" alt="Foto Ayah Tercinta">
+        </div>
+        
+        <div class="message">
+            <p>Di hari yang istimewa ini, kami ingin mengucapkan Selamat Ulang Tahun yang ke-56 untuk ayah tercinta. Terima kasih atas segala pengorbanan, kasih sayang, dan bimbingan yang tak ternilai selama ini.</p>
+            
+            <p>Semoga di usia yang ke-56 ini, ayah diberikan kesehatan yang baik, kebahagiaan yang melimpah, dan umur yang penuh barakah. Ayah adalah pahlawan kami, sosok yang selalu menjadi panutan dan tempat kami berlindung.</p>
+        </div>
+        
+        <button class="btn" onclick="showMessage()">Klik untuk Pesan Spesial</button>
+        
+        <div class="hidden-message" id="specialMessage">
+            <p>Ayah,</p>
+            <p>Kami mungkin tidak selalu bisa mengungkapkan betapa berartinya ayah bagi kami, tapi ketahuilah bahwa setiap hari kami bersyukur memiliki ayah seperti Anda. Di usia yang ke-56 ini, semoga ayah terus diberikan kekuatan untuk menjadi pemimpin keluarga kami.</p>
+            <p>Terima kasih untuk semua tawa, pelajaran hidup, dan cinta tanpa syarat yang ayah berikan. Kami mencintaimu lebih dari kata-kata bisa ungkapkan.</p>
+        </div>
+        
+        <div class="signature">Dengan Cinta,<br>Anakmu</div>
+    </div>
+
+    <script>
+        // Membuat confetti
+        function createConfetti() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                document.body.appendChild(confetti);
+            }
+            
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'hearts';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                document.body.appendChild(heart);
+            }
+        }
+        
+        // Menampilkan pesan spesial
+        function showMessage() {
+            const message = document.getElementById('specialMessage');
+            message.classList.toggle('show');
+            
+            // Buat confetti pertama kali tombol diklik
+            if (document.querySelectorAll('.confetti').length === 0) {
+                createConfetti();
+            }
+        }
+        
+        // Animasi angka usia
+        function animateAge() {
+            const age = document.querySelector('.age-display');
+            setInterval(() => {
+                age.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    age.style.transform = 'scale(1)';
+                }, 500);
+            }, 2000);
+        }
+        
+        // Jalankan saat halaman dimuat
+        window.onload = function() {
+            animateAge();
+        };
+    </script>
+</body>
+</html>
